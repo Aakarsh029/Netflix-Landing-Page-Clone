@@ -151,6 +151,7 @@ img {
 
 .col-border {
 	border-bottom: var(--primary-color) 4px solid;
+	transition: transform 0.5s;
 }
 
 .col-content {
@@ -168,7 +169,7 @@ img {
 .show {
 	display: block !important;
 	opacity: 1 !important;
-	transition: all 1000 ease-in;
+	transition: all 0.5s;
 }
 
 #col-1-content .col-1-content-inner {
@@ -629,34 +630,26 @@ img {
         const colItems = document.querySelectorAll('.col-item');
 const colContentItems = document.querySelectorAll('.col-content-item');
 
-// Select col content item
 function selectItem(e) {
-	// Remove all show and border classes
 	removeBorder();
 	removeShow();
-	// Add border to current col item
 	this.classList.add('col-border');
-	// Grab content item from DOM
 	const colContentItem = document.querySelector(`#${this.id}-content`);
-	// Add show class
 	colContentItem.classList.add('show');
 }
 
-// Remove bottom borders from all col items
 function removeBorder() {
 	colItems.forEach(item => {
 		item.classList.remove('col-border');
 	});
 }
 
-// Remove show class from all content items
 function removeShow() {
 	colContentItems.forEach(item => {
 		item.classList.remove('show');
 	});
 }
 
-// Listen for col item click
 colItems.forEach(item => {
 	item.addEventListener('click', selectItem);
 });
